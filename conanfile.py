@@ -64,7 +64,10 @@ class FlatBuffersConan(ConanFile):
         cmake.install()
 
     def package(self):
-        pass
+        cmake_dir = os.path.join("flatbuffers-%s" % self.version, "CMake")
+        self.copy("BuildFlatBuffers.cmake", src=cmake_dir, dst=".")
+        self.copy("FindFlatBuffers.cmake", src=cmake_dir, dst=".")
+        self.copy("PackageDebian.cmake", src=cmake_dir, dst=".")
 
     def package_info(self):
         self.cpp_info.libs = ["flatbuffers"]
