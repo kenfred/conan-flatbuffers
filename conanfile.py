@@ -4,7 +4,7 @@ import os, sys
 
 class FlatBuffersConan(ConanFile):
     name = "FlatBuffers"
-    version = "1.7.1"
+    version = "1.8.0"
     license = "Apache license, v2"
     url = "https://github.com/kenfred/conan-flatbuffers"
     description = """FlatBuffers is an efficient cross platform serialization
@@ -67,6 +67,7 @@ class FlatBuffersConan(ConanFile):
         cmake_dir = os.path.join("flatbuffers-%s" % self.version, "CMake")
         self.copy("BuildFlatBuffers.cmake", src=cmake_dir, dst=".")
         self.copy("FindFlatBuffers.cmake", src=cmake_dir, dst=".")
+        self.copy("FlatbuffersConfig.cmake", src=cmake_dir, dst=".")
         self.copy("PackageDebian.cmake", src=cmake_dir, dst=".")
 
     def package_info(self):
